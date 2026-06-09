@@ -2,10 +2,8 @@ import java.util.*;
 
 /**
  * Stateless BFS solver for a boolean maze grid.
- *
  * Finds the shortest path (minimum steps) from cell (0, 0) to cell
  * (rows-1, cols-1) using cardinal movement only (up / down / left / right).
- *
  * Returns null when:
  *   • the grid is null or empty
  *   • the start cell (0,0) is a wall

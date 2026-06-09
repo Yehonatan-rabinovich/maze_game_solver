@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * Second screen: draws the maze manually from a decoded boolean grid,
  * and animates the BFS solution path on request.
- *
  * Drawing rules (all colors from API — nothing hardcoded except CELL_SIZE):
  *   • Passage cell  → Color.WHITE  (always)
  *   • Wall cell     → config.wallCellColor
@@ -49,7 +48,7 @@ public class MazePanel extends JPanel {
         top.add(title, BorderLayout.WEST);
 
         JButton backBtn = btn("← Back to Config", new Color(40, 60, 130));
-        backBtn.addActionListener(e -> goBack());
+        backBtn.addActionListener(_ -> goBack());
         top.add(backBtn, BorderLayout.EAST);
         add(top, BorderLayout.NORTH);
 
@@ -68,7 +67,7 @@ public class MazePanel extends JPanel {
 
         checkBtn = btn("Check Solution", new Color(5, 90, 55));
         checkBtn.setEnabled(false);
-        checkBtn.addActionListener(e -> checkSolution());
+        checkBtn.addActionListener(_ -> checkSolution());
         bot.add(checkBtn);
 
         statusLabel = new JLabel("Load a maze to begin.");
@@ -123,7 +122,7 @@ public class MazePanel extends JPanel {
         checkBtn.setEnabled(false);   // prevent a second simultaneous animation
         int delay = Math.max(1, config.animationDelayMs);
 
-        anim = new Timer(delay, e -> {
+        anim = new Timer(delay, _ -> {
             pathTip++;
             drawPanel.repaint();
             if (pathTip >= solution.size() - 1) {

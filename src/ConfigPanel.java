@@ -6,7 +6,6 @@ import java.util.concurrent.ExecutionException;
  * First screen shown at startup.
  * Displays render configuration from the API, accepts maze dimensions,
  * and provides Refresh Config / GET MAZE buttons.
- *
  * Refresh Config: re-fetches settings only — never loads a maze.
  * GET MAZE:       validates dimensions, requests the maze, switches to MazePanel.
  */
@@ -159,8 +158,8 @@ public class ConfigPanel extends JPanel {
         getMazeBtn.setBounds(LX + 220, 540, 200, 44);
         add(refreshBtn);
         add(getMazeBtn);
-        refreshBtn.addActionListener(e -> fetchConfig());
-        getMazeBtn.addActionListener(e -> fetchMaze());
+        refreshBtn.addActionListener(_ -> fetchConfig());
+        getMazeBtn.addActionListener(_ -> fetchMaze());
 
         // ── Status ──────────────────────────────────────────────────────────
         statusLabel.setFont(new Font("Monospaced", Font.PLAIN, 13));

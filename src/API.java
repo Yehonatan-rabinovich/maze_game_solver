@@ -72,12 +72,7 @@ public class API {
         String  pathColor        = j.get("pathColor").toString();
         boolean drawGrid         = Boolean.parseBoolean(j.get("drawGrid").toString());
         String  gridColor        = j.get("gridColor").toString();
-        int     animationDelayMs;
-        try {
-            animationDelayMs = Integer.parseInt(j.get("animationDelayMs").toString());
-        } catch (NumberFormatException e) {
-            animationDelayMs = 50;
-        }
+        int animationDelayMs = Integer.parseInt(j.get("animationDelayMs").toString());
 
         return new RenderConfig(wallCellColor, pathColor, drawGrid, gridColor, animationDelayMs);
     }
@@ -124,7 +119,7 @@ public class API {
                 int py = Math.min(r * cellH + cellH / 2, img.getHeight() - 1);
                 Color col = new Color(img.getRGB(px, py));
                 // White-ish pixel → open passage; anything darker → wall
-                grid[r][c] = col.getRed() > 200 && col.getGreen() > 200 && col.getBlue() > 200;
+                grid[r][c] = col.getRed() == 255 && col.getGreen() == 255 && col.getBlue() == 255;
             }
         }
         return grid;
